@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *
+        {
+            padding:0;
+            margin:0;
+            box-sizing: border-box;
+        }
+        .container
+        {
+            position: relative;
+            width:500px;
+            height: 500px;
+            margin: auto;
+        }
+        #rate
+        {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            inset: 0;
+            font-size: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, Helvetica, sans-serif;
+            color:purple;
+        }
+        svg
+        {
+            width:100%;
+            height: 100%;
+            margin: auto;
+            display: block;
+            transform:rotate(-90deg);
+        }
+        #one
+        {
+            stroke:rgb(9, 63, 45);
+            stroke-width:20px;
+            fill: none;
+            stroke-dasharray:6.285px;
+        }
+        #two
+        {
+            stroke:white;
+            stroke-width:25px;
+            fill: none;
+            stroke-dasharray:1257px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <svg>
+            <circle id = "one" cx="250" cy="250" r="200"></circle>
+            <circle id = "two" cx="250" cy="250" r="200"></circle>
+        </svg>
+        <div id="rate"></div>
+    </div>
+</body>
+<script>
+    let rate = 200;
+    let interval = setInterval(change,100)
+    function change()
+    {
+        rate--
+        if(rate == 0) clearInterval(interval)
+        document.getElementById("two").style.strokeDashoffset =  1256 + rate * 6.28 + "px"
+        document.getElementById("rate").innerHTML = Math.floor(100 - rate/2) + "%"
+        console.log(rate)
+    }
+</script>
+</html>
